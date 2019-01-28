@@ -5,27 +5,27 @@
         <meta name="author" content="David McNeary">
         <meta name="description" content="Giphy Gator interacts with the Giphy API to create clickable queries on the page.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="assets/reset.css" type="text/style">
-        <link rel="stylesheet" href="assets/style.css" type="text/style">
+        <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="assets/reset.css" type="text/css">
+        <link rel="stylesheet" href="assets/style.css" type="text/css">
         <title>
             Giphy Gator
         </title>
     </head>
     <body>
         <header id="button-row">
-            <h1>Giphy</h1><img src="assets/images/gator.jpg" alt="little gator friend" />
+            <h1>Giphy</h1>
+            <img class="logo" src="assets/images/alligator.png" alt="little gator friend" />
         </header>
-        <main>
-            <section id="image-container"></section>
-            <aside>
-                <form id="giphy-search">
-                    <label for="search">Search for GIFs: </label>
-                    <input id="search-field" type="search" name="search">
-                    <input id="search-button" type="submit" value="Search">
-                </form>
-            </aside>
-        </main>
-        
+        <section id="image-container"></section>
+        <aside>
+            <form id="giphy-search">
+                <label for="search">Search for GIFs: </label>
+                <input id="search-field" type="search" name="search">
+                <input id="search-button" type="submit" value="Search">
+            </form>
+        </aside>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="assets/app.js"></script>
     </body>
 </html>
