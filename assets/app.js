@@ -1,48 +1,57 @@
 var topics = ["LOL", "OMG", "LMAO", "G2G", "BRB", "XOXO", "FYI", "MFW", "ILY", "IDC"];
 
 function buttonMaker() {
+    $("#button-row").empty();
     for (i = 0; i < topics.length; i++) {
-        newButton = $("<button>").text(topics[i]);
+        newButton = $("<button>").attr("class", "gator").text(topics[i]);
         $("#button-row").append(newButton);
     }
 }
 
-$("#search-button").on("click", function () {
-    event.preventDefault();
-    term = $("#search-field").val();
-    newButton = $("<button>").text(term)
-    $("#button-row").append(newButton);
-});
-
-var searchGiphy = function(term) {
-    var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC"; //api key needed
+function searchGiphy(term) {
+    console.log(term);
+    var apikey = "5Tn2dfjMLEvFaViuDXWY8SJhoVNi7WOv";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=" + term + "&limit=10&rating=pg-13";
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function(response) {
-        var dataObj = response.data;//     hey david look at this in the morning - dynamic elements solution for rest of code to translate written code to desires variables (dataObj is clumsy, choose somthing else)
-        
-          for (var i = 0; i < dataObj.length; i++) {
-
-            // Creating and storing a div tag
+    })
+    .then(function(response) {
+        var dataReturn = response.data;
+        for (var i = 0; i < dataReturn.length; i++) {
             var gifDiv = $("<div>");
-
-            // Creating a paragraph tag with the result item's rating
-            var para = $("<p>").text("Rating: " + dataObj[i].rating);
-
-            // Creating and storing an image tag
-            var animalImage = $("<img>");
-            // Setting the src attribute of the image to a property pulled off the result item
-            animalImage.attr("src", results[i].images.fixed_height.url);
-
-            // Appending the paragraph and image tag to the animalDiv
-            animalDiv.append(p);
-            animalDiv.append(animalImage);
-
-            // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-            $("#gifs-appear-here").prepend(animalDiv);
-          }
+            var para = $("<p>").text("Rating: " + dataReturn[i].rating);
+            var topicImage = $("<img>");
+            topicImage.attr("src", dataReturn[i].images.fixed_width_small.url);
+            topicImage.attr("data-state", "still");
+            topicImage.addClass("gator-image");
+            gifDiv.append(para);
+            gifDiv.append(topicImage);
+            $("#image-container").prepend(gifDiv);
+            console.log(response.data);
+        }
     });
     }
+//click handler start/stop gif
+$("img").click(function() {
+    state = $(this).attr("data-state")
+    if (state === "still") {
+        $(this).attr("src", $(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+      } else {
+        $(this).attr("src", $(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+      }
+})
+
+$("#search-button").on("click", function() {
+    event.preventDefault();
+    searchTerm = $("#search-field").val();
+    topics.push(searchTerm);
+    buttonMaker();
+});
+
+$("#button-row").on("click", ".gator", function() {
+    searchGiphy($(this).text());
+})
 buttonMaker();
-searchGiphy();

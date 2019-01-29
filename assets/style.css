@@ -28,6 +28,10 @@ h1 {
 	width: 100px;
 }
 
+aside {
+	float: right;
+}
+
 #image-container {
     background-color: #D7CA49;
 	max-width: 60%;
@@ -39,9 +43,6 @@ h1 {
 }
 
 /*to do:
-center h1 in logo to gator img
-remove gator whitespace
-break button row to new line
 place search bar in the exactly right space ATMO
 stay up
 STAY UP*/ 
