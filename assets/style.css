@@ -29,22 +29,42 @@ h1 {
 }
 
 aside {
-	float: right;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 250px;
 }
 
 #image-container {
-    background-color: #D7CA49;
+	background-color: #D7CA49;
 	max-width: 60%;
-	min-width: 10%;
-	min-height: 10%;
     margin-left: auto;
     margin-right: auto;
 	color: #888;
+	text-align: center;
 }
 
+#image-container img {
+	max-width: 150px;
+}
+
+@media only screen and (min-width: 768px) {
+	aside {
+		margin-right: 10px;
+		margin-left: 60%;
+		text-align: right;
+		float: right;
+		width: 250px;
+	}
+	#image-container {
+		text-align: left;
+	}
+	#image-container img {
+		max-width: 350px;
+	}
+} 
+
 /*to do:
-place search bar in the exactly right space ATMO
-stay up
-STAY UP*/ 
+media query - center search bar and images at 360px, left align images and float bar to right at next break*/ 
 
 

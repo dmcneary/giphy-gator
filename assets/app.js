@@ -22,8 +22,10 @@ function searchGiphy(term) {
             var gifDiv = $("<div>");
             var para = $("<p>").text("Rating: " + dataReturn[i].rating);
             var topicImage = $("<img>");
-            topicImage.attr("src", dataReturn[i].images.fixed_width_small.url);
+            topicImage.attr("src", dataReturn[i].images.fixed_width_still.url);
             topicImage.attr("data-state", "still");
+            topicImage.attr("data-animate", dataReturn[i].images.fixed_width.url)
+            topicImage.attr("data-still", dataReturn[i].images.fixed_width_still.url);
             topicImage.addClass("gator-image");
             gifDiv.append(para);
             gifDiv.append(topicImage);
@@ -33,7 +35,7 @@ function searchGiphy(term) {
     });
     }
 //click handler start/stop gif
-$("img").click(function() {
+$("#image-container").on("click", ".gator-image", function() {
     state = $(this).attr("data-state")
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
