@@ -36,7 +36,7 @@ function searchGiphy(term) {
     }
 //click handler start/stop gif
 $("#image-container").on("click", ".gator-image", function() {
-    state = $(this).attr("data-state")
+    state = $(this).attr("data-state");
     if (state === "still") {
         $(this).attr("src", $(this).attr("data-animate"));
         $(this).attr("data-state", "animate");
