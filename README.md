@@ -1,4 +1,4 @@
-# giphy-gator
+# Giphy Gator
 A user interface for searching and displaying images from the Giphy API
 
 ### Instructions:
